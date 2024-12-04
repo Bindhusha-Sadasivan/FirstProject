@@ -1,19 +1,34 @@
+<!-- Components data binding deep dive -->
+
 <div class="container">
   <div class="row">
-    <br class="col-xs-12">
-      <h2>My Server</h2>
-      <button class="btn btn-primary"
-              (click)="onAddServer()">
-        Add Servers
-      </button>
-      <br>
+  <div class="col-xs-12">
+    <h2>Add new Servers or Blue prints</h2>
+    <label for="serverName">Server Name: </label>
+    <input type="text" id="serverName" form-control="serverName" [(ngModel)]="newServerName">
+    <br>
+    <label for="serverContent">Server Content: </label>
+    <input type="text" id="serverContent" form-control="serverContent" [(ngModel)]="newSeverContent">
+    <br>
+    <hr>
+    <button class="btn btn-primary" (click)="onAddNewServer()"> Add Server </button>
+    <button class="btn btn-primary" (click)="onAddNewBluePrint()"> Add Server Blue print </button>
+  </div>
+  </div>
 
-      <ul class="list-group">
-        <li class="list-group-item"
-            *ngFor="let s of servers; let i = index"
-             (click)="onRemoveServer(i)">
-          {{servers}}
-          </li>
-      </ul>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="panel-default" *ngFor="let element of serverElements">
+      <div class="panel-heading">{{element.name}}</div>
+        <div class="panel-body">
+          <p>
+            <strong *ngIf="element.type ==='addServer'">{{element.content}}</strong>
+            <em *ngIf="element.type ==='bluePrintServer'">{{element.content}}</em>
+          </p>
+        </div>
+
     </div>
   </div>
+</div>
+
+</div>
