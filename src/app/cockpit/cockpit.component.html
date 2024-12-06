@@ -1,1 +1,14 @@
-<p>cockpit works!</p>
+<div class="row">
+  <div class="col-xs-12">
+    <h2>Add new Servers or Blue prints</h2>
+    <label for="serverName">Server Name: </label>
+    <input type="text" id="serverName" form-control="serverName" [(ngModel)]="newServerName">
+    <br>
+    <label for="serverContent">Server Content: </label>
+    <input type="text" id="serverContent" form-control="serverContent" [(ngModel)]="newSeverContent">
+    <br>
+    <hr>
+    <button class="btn btn-primary" (click)="onAddNewServer()"> Add Server </button>
+    <button class="btn btn-primary" (click)="onAddNewBluePrint()"> Add Server Blue print </button>
+  </div>
+  </div>

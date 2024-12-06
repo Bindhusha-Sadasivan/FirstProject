@@ -1,33 +1,17 @@
 <!-- Components data binding deep dive -->
 
 <div class="container">
-  <div class="row">
-  <div class="col-xs-12">
-    <h2>Add new Servers or Blue prints</h2>
-    <label for="serverName">Server Name: </label>
-    <input type="text" id="serverName" form-control="serverName" [(ngModel)]="newServerName">
-    <br>
-    <label for="serverContent">Server Content: </label>
-    <input type="text" id="serverContent" form-control="serverContent" [(ngModel)]="newSeverContent">
-    <br>
-    <hr>
-    <button class="btn btn-primary" (click)="onAddNewServer()"> Add Server </button>
-    <button class="btn btn-primary" (click)="onAddNewBluePrint()"> Add Server Blue print </button>
-  </div>
-  </div>
+  <app-cockpit
+  (serverCreated)="onServerAdded($event)"
+  (blueprintCreated)="onBluePrintAdded($event)"
+  ></app-cockpit>
 
 <div class="row">
   <div class="col-xs-12">
-    <div class="panel-default" *ngFor="let element of serverElements">
-      <div class="panel-heading">{{element.name}}</div>
-        <div class="panel-body">
-          <p>
-            <strong *ngIf="element.type ==='addServer'">{{element.content}}</strong>
-            <em *ngIf="element.type ==='bluePrintServer'">{{element.content}}</em>
-          </p>
-        </div>
-
-    </div>
+    <app-server-element
+    *ngFor="let element of serverElements"
+    [serverElement]="element">
+  </app-server-element>
   </div>
 </div>
 
