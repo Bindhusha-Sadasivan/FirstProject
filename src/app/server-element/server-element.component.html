@@ -1,10 +1,13 @@
 <div class="panel-default" >
   <div class="panel-heading">{{element.name}}</div>
     <div class="panel-body">
-      <p>
+      <!-- <p>
         <strong *ngIf="element.type ==='addServer'">{{element.content}}</strong>
         <em *ngIf="element.type ==='bluePrintServer'">{{element.content}}</em>
-      </p>
+      </p> -->
+      <!-- using ng-content -->
+       <ng-content></ng-content>
+
     </div>
 
 </div>

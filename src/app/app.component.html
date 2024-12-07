@@ -11,6 +11,13 @@
     <app-server-element
     *ngFor="let element of serverElements"
     [serverElement]="element">
+
+  <!-- using ng-content -->
+  <p>
+    <strong *ngIf="element.type ==='addServer'">{{element.content}}</strong>
+    <em *ngIf="element.type ==='bluePrintServer'">{{element.content}}</em>
+  </p>
+
   </app-server-element>
   </div>
 </div>
