@@ -10,18 +10,29 @@ import { FormsModule } from '@angular/forms';
 })
 export class CockpitComponent {
 
-  @Output('serverCreated') serverAdded = new EventEmitter<{serverName:string, serverContent:string}>();
-  @Output('blueprintCreated') bluePrintAdded = new EventEmitter<{serverName:string, serverContent:string}>();
-  public newServerName:any ='';
+  @Output('serverCreated') serverAdded = new EventEmitter<{serverName:any, serverContent:string}>();
+  @Output('blueprintCreated') bluePrintAdded = new EventEmitter<{serverName:any, serverContent:string}>();
+  // public newServerName:any ='';
   public newSeverContent:any = '';
 
-  onAddNewServer(){
-    this.serverAdded.emit({serverName:this.newServerName, serverContent:this.newSeverContent});
+  // onAddNewServer(){
+  //   this.serverAdded.emit({serverName:this.newServerName, serverContent:this.newSeverContent});
+  //   this.serverAdded.subscribe((data) => console.log('Emitted Data:', data));
+  // }
+
+  onAddNewServer(serverNameInput:HTMLInputElement, serverContentInput:HTMLInputElement){
+    console.log(serverNameInput)
+    this.serverAdded.emit({serverName:serverNameInput.value, serverContent:serverContentInput.value});
     this.serverAdded.subscribe((data) => console.log('Emitted Data:', data));
   }
 
-  onAddNewBluePrint(){
-    this.bluePrintAdded.emit({serverName:this.newServerName, serverContent:this.newSeverContent});
+  // onAddNewBluePrint(){
+  //   this.bluePrintAdded.emit({serverName:this.newServerName, serverContent:this.newSeverContent});
+  //   this.bluePrintAdded.subscribe(data => console.log('Emitted Data:', data))
+  // }
+
+  onAddNewBluePrint(serverNameInput:HTMLInputElement, serverContentInput:HTMLInputElement){
+    this.bluePrintAdded.emit({serverName:serverNameInput.value, serverContent:serverContentInput.value});
     this.bluePrintAdded.subscribe(data => console.log('Emitted Data:', data))
   }
 }
